@@ -11,7 +11,7 @@ spring:
     driver-class-name: org.h2.Driver
     password:
     username: sa
-    url: jdbc:h2:mem:customers
+    url: jdbc:h2:mem:customers;DB_CLOSE_DELAY=-1
 
   h2:
     console:

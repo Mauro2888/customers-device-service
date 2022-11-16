@@ -1,14 +1,11 @@
-package com.customer.service;
+package com.customer.service.model.entity;
 
-import com.customer.service.model.DeviceStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-class CustomerApplicationTests {
+class DeviceStatusTest {
 
     /**
      * DeviceStatus enum.
@@ -30,5 +27,4 @@ class CustomerApplicationTests {
         assertEquals("Invalid status", exception.getMessage());
 
     }
-
 }
