@@ -1,4 +1,4 @@
-package com.customer.service.model;
+package com.customer.service.model.entity;
 
 import java.util.stream.Stream;
 
