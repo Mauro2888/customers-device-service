@@ -5,6 +5,7 @@ import com.customer.service.utils.ListSizeMax;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -20,13 +21,13 @@ public class Customer {
     @NotBlank
     private String indirizzo;
     @ListSizeMax
-    @OneToMany(cascade=CascadeType.ALL)
-
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_codiceFiscale")
     private List<@Valid Device> devices;
 
+    protected Customer() {
+    }
 
-    protected Customer() {}
     public Customer(String name, String cognome, String codiceFiscale, String indirizzo, List<@Valid Device> devices) {
         this.name = name;
         this.cognome = cognome;

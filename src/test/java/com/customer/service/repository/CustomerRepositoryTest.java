@@ -11,12 +11,18 @@ import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * This class test the repository customer layer of the application
+ */
 @DataJpaTest
 class CustomerRepositoryTest {
 
     @Autowired
     private CustomerRepository customerRepoUnderTest;
 
+    /**
+     * Find customer by codice fiscale test.
+     */
     @Test
     void findCustomerByCodiceFiscaleTest() {
         customerRepoUnderTest.save(CustomerBuilder.getCustomerEntity());
@@ -26,6 +32,9 @@ class CustomerRepositoryTest {
         assertThat(exists).isTrue();
     }
 
+    /**
+     * Find customer by name test.
+     */
     @Test
     void findCustomerByNameTest(){
         customerRepoUnderTest.save(CustomerBuilder.getCustomerEntity());

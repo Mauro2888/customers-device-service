@@ -4,11 +4,10 @@ import com.customer.service.exception.CustomerNotFoundException;
 import com.customer.service.exception.UserNotAvailableException;
 import com.customer.service.mapper.CustomerMapper;
 import com.customer.service.model.dto.CustomerDto;
+import com.customer.service.model.dto.PatchDto;
 import com.customer.service.model.entity.Customer;
 import com.customer.service.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 
 @Service
 public class CustomerService {
@@ -21,19 +20,26 @@ public class CustomerService {
         this.customerMapper = customerMapper;
     }
 
-    public CustomerDto getCustomerDevices(String codiceFiscale) {
-        return customerMapper.toDto(customerRepository.findCustomerByCodiceFiscale(codiceFiscale)
-                .orElseThrow(() -> new CustomerNotFoundException("Customer not found")));
+    public CustomerDto findCustomerDevices(String codiceFiscale) {
+        return customerRepository.findCustomerByCodiceFiscale(codiceFiscale)
+                .map(customerMapper::toDto)
+                .orElseThrow(() -> new CustomerNotFoundException("Customer not found"));
     }
 
-    @Transactional
-    public String addCustomerUser(CustomerDto customerDto) {
+    public CustomerDto createCustomerUser(CustomerDto customerDto) {
         Customer customer = customerMapper.toEntity(customerDto);
         customerRepository.findCustomerByCodiceFiscale(customer.getCodiceFiscale())
-        .ifPresent(user -> {
-            throw new UserNotAvailableException("User already taken");
-        });
+                .ifPresent(user -> {
+                    throw new UserNotAvailableException("User already taken");
+                });
+        return customerMapper.toDto(customerRepository.save(customer));
+    }
+
+    public CustomerDto updateCustomerIndirizzo(String codiceFiscale, PatchDto.Request.updateIndirizzo indirizzoDto) {
+        Customer customer = customerRepository.findCustomerByCodiceFiscale(codiceFiscale)
+                .orElseThrow(() -> new CustomerNotFoundException("Customer not found"));
+        customer.setIndirizzo(indirizzoDto.getIndirizzo());
         customerRepository.save(customer);
-        return "Success";
+        return customerMapper.toDto(customer);
     }
 }
