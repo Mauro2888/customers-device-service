@@ -1,4 +1,4 @@
-# customers device service API
+# Customers-device-service API
 
 API for managing customers and their devices.
 
@@ -23,9 +23,49 @@ mvn spring-boot:run
 The application uses an in-memory H2 database. 
 You can access the console at [http://localhost:8081/h2-console](http://localhost:8081/h2-console) 
 with the following credentials:
- - username: sa
- - password: password
-
+ - username: customer
+ - password: 
+ - Jdbc-url: jdbc:h2:mem:customers
 
 ### Swagger UI
 Open your browser and navigate to [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
+
+### POST customer request example
+[http://localhost:8081/api/v1/customer](http://localhost:8081/api/v1/customer)
+
+```json
+{
+  "nome": "Luca",
+  "cognome": "Cau",
+  "codiceFiscale": "LCUCAU97S24H501M",
+  "indirizzo": "Via Liguria",
+  "devices": [
+    {
+      "status": "LOST"
+    },
+     {
+      "status": "INACTIVE"
+    }
+  ]
+}
+
+```
+JSON POST response example
+```json
+{
+  "nome": "Luca",
+  "cognome": "Cau",
+  "codiceFiscale": "LCUCAU97S24H501M",
+  "indirizzo": "Via Liguria",
+  "devices": [
+    {
+      "id": "19cca969-a85b-4741-9a49-00afaad374e7",
+      "status": "LOST"
+    },
+    {
+      "id": "3ba73c11-f7f9-441b-b83b-5f5fef6959c2",
+      "status": "INACTIVE"
+    }
+  ]
+}
+```

@@ -1,13 +1,11 @@
 package com.customer.service.controller;
 
 import com.customer.service.CustomUtils;
-import com.customer.service.CustomerBuilder;
-import com.customer.service.model.dto.PatchDto;
+import com.customer.service.model.dto.common.PatchDto;
 import com.customer.service.service.DeviceBuilder;
 import com.customer.service.service.DeviceService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;

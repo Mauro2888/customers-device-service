@@ -1,4 +1,4 @@
-package com.customer.service.model.dto;
+package com.customer.service.model.dto.common;
 
 import com.customer.service.model.entity.DeviceStatus;
 

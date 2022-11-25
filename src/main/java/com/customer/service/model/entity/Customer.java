@@ -1,21 +1,22 @@
 package com.customer.service.model.entity;
 
+import com.customer.service.utils.CodiceFiscale;
 import com.customer.service.utils.ListSizeMax;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
 @Table(name = "customer")
 public class Customer {
     @NotBlank
-    private String name;
+    private String nome;
     @NotBlank
     private String cognome;
     @NotBlank
+    @CodiceFiscale
     @Id
     private String codiceFiscale;
     @NotBlank
@@ -28,20 +29,20 @@ public class Customer {
     protected Customer() {
     }
 
-    public Customer(String name, String cognome, String codiceFiscale, String indirizzo, List<@Valid Device> devices) {
-        this.name = name;
+    public Customer(String nome, String cognome, String codiceFiscale, String indirizzo, List<@Valid Device> devices) {
+        this.nome = nome;
         this.cognome = cognome;
         this.codiceFiscale = codiceFiscale;
         this.indirizzo = indirizzo;
         this.devices = devices;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String name) {
+        this.nome = name;
     }
 
     public String getCognome() {

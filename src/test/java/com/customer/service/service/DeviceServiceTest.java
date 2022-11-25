@@ -1,7 +1,7 @@
 package com.customer.service.service;
 
 import com.customer.service.mapper.DeviceMapper;
-import com.customer.service.model.dto.DeviceDto;
+import com.customer.service.model.dto.device.DeviceDto;
 import com.customer.service.model.entity.Device;
 import com.customer.service.repository.DeviceRepository;
 import org.junit.jupiter.api.Assertions;

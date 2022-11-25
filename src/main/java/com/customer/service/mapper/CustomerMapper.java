@@ -1,6 +1,6 @@
 package com.customer.service.mapper;
 
-import com.customer.service.model.dto.CustomerDto;
+import com.customer.service.model.dto.customer.CustomerDto;
 import com.customer.service.model.entity.Customer;
 import org.mapstruct.Mapper;
 

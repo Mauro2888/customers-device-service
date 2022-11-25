@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, String> {
-    @Query("select customer from Customer customer where customer.name = ?1")
+    @Query("select customer from Customer customer where customer.nome = ?1")
     Optional<Customer> findCustomerByName(String name);
 
     @Query("select customer from Customer customer where customer.codiceFiscale = ?1")

@@ -2,22 +2,11 @@ package com.customer.service.controller;
 
 import com.customer.service.CustomUtils;
 import com.customer.service.CustomerBuilder;
-import com.customer.service.mapper.CustomerMapper;
-import com.customer.service.model.dto.CustomerDto;
-import com.customer.service.model.dto.DeviceDto;
-import com.customer.service.model.dto.PatchDto;
-import com.customer.service.model.entity.Customer;
-import com.customer.service.model.entity.DeviceStatus;
-import com.customer.service.repository.CustomerRepository;
+import com.customer.service.model.dto.common.PatchDto;
+import com.customer.service.model.dto.customer.CustomerDto;
 import com.customer.service.service.CustomerService;
-import com.customer.service.service.DeviceBuilder;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mapstruct.factory.Mappers;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,18 +14,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import javax.validation.Validation;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;

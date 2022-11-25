@@ -3,7 +3,7 @@ package com.customer.service.service;
 import com.customer.service.CustomerBuilder;
 import com.customer.service.exception.UserNotAvailableException;
 import com.customer.service.mapper.CustomerMapper;
-import com.customer.service.model.dto.CustomerDto;
+import com.customer.service.model.dto.customer.CustomerDto;
 import com.customer.service.model.entity.Customer;
 import com.customer.service.repository.CustomerRepository;
 import org.assertj.core.api.Assertions;
@@ -70,8 +70,8 @@ class CustomerServiceTest {
 
         CustomerDto customerDevices = underTestService.findCustomerDevices(CustomerBuilder.getCustomerDto().codiceFiscale());
         Assert.notNull(customerDevices, "Customer not found");
-        Assertions.assertThat(customerDevices.name()).isNotEmpty();
-        Assertions.assertThat(customerDevices.name()).isEqualTo(CustomerBuilder.getCustomerDto().name());
+        Assertions.assertThat(customerDevices.nome()).isNotEmpty();
+        Assertions.assertThat(customerDevices.nome()).isEqualTo(CustomerBuilder.getCustomerDto().nome());
     }
 
     /**
@@ -82,7 +82,7 @@ class CustomerServiceTest {
         Mockito.when(customerRepositoryUnderTest.save(any(Customer.class)))
                 .thenReturn(CustomerBuilder.getCustomerEntity());
         CustomerDto user = underTestService.createCustomerUser(CustomerBuilder.getCustomerDto());
-        Assertions.assertThat(user.name()).isEqualTo("Mario");
+        Assertions.assertThat(user.nome()).isEqualTo("Mario");
     }
 
     /**
@@ -123,5 +123,13 @@ class CustomerServiceTest {
         CustomerDto manyDevices = CustomerBuilder.getCustomerDtoWithManyDevices();
         Set<ConstraintViolation<CustomerDto>> violations = validator.validate(manyDevices);
         Assertions.assertThat(violations.size()).isEqualTo(1);
+    }
+    @Test
+    void validationCodiceFiscaleTest() {
+        CustomerDto wrongCodiceFiscale = CustomerBuilder.getCustomerDtoWithWrongCodiceFiscale();
+        Set<ConstraintViolation<CustomerDto>> violations = validator.validate(wrongCodiceFiscale);
+        String message = violations.stream().map(ConstraintViolation::getMessage).findFirst().get();
+        Assertions.assertThat(violations.size()).isEqualTo(1);
+        Assertions.assertThat(message).isEqualTo("Codice Fiscale not valid");
     }
 }
