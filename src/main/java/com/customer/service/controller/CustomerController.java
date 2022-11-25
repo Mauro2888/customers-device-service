@@ -54,6 +54,10 @@ public class CustomerController {
         return customerService.findCustomerDevices(codiceFiscale);
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Customer Updated"),
+            @ApiResponse(responseCode = "404", description = "Customer Not Found")
+    })
     @PatchMapping(value = "{codiceFiscale}/indirizzo",consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<CustomerDto> updateCustomerAddress(@PathVariable String codiceFiscale,
