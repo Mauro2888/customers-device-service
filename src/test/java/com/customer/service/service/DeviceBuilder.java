@@ -1,7 +1,7 @@
 package com.customer.service.service;
 
-import com.customer.service.model.dto.DeviceDto;
-import com.customer.service.model.dto.PatchDto;
+import com.customer.service.model.dto.device.DeviceDto;
+import com.customer.service.model.dto.common.PatchDto;
 import com.customer.service.model.entity.Device;
 import com.customer.service.model.entity.DeviceStatus;
 

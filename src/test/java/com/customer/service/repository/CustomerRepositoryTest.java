@@ -33,7 +33,7 @@ class CustomerRepositoryTest {
     }
 
     /**
-     * Find customer by name test.
+     * Find customer by nome test.
      */
     @Test
     void findCustomerByNameTest(){

@@ -1,8 +1,8 @@
 package com.customer.service;
 
-import com.customer.service.model.dto.CustomerDto;
-import com.customer.service.model.dto.DeviceDto;
-import com.customer.service.model.dto.PatchDto;
+import com.customer.service.model.dto.customer.CustomerDto;
+import com.customer.service.model.dto.device.DeviceDto;
+import com.customer.service.model.dto.common.PatchDto;
 import com.customer.service.model.entity.Customer;
 import com.customer.service.model.entity.Device;
 import com.customer.service.model.entity.DeviceStatus;
@@ -24,6 +24,8 @@ public class CustomerBuilder {
                 "MRARSS80A01H501L",
                 "Via Roma 1", List.of(new DeviceDto(UUID.randomUUID(), DeviceStatus.ACTIVE)));
     }
+
+
     public static CustomerDto getCustomerUpdatedDto() {
         return new CustomerDto(
                 "Mario",
@@ -57,5 +59,13 @@ public class CustomerBuilder {
 
     public static PatchDto.Request.updateIndirizzo getPatchRequestDto() {
         return new PatchDto.Request.updateIndirizzo("Via Cagliari 3");
+    }
+
+    public static CustomerDto getCustomerDtoWithWrongCodiceFiscale() {
+        return new CustomerDto(
+                "Luca",
+                "Boi",
+                "asdffg",
+                "Via Cagliari 1", List.of(new DeviceDto(UUID.randomUUID(), DeviceStatus.ACTIVE)));
     }
 }

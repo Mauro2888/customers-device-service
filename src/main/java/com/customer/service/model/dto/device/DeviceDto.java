@@ -1,4 +1,4 @@
-package com.customer.service.model.dto;
+package com.customer.service.model.dto.device;
 
 import com.customer.service.model.entity.DeviceStatus;
 
@@ -9,5 +9,5 @@ import java.util.UUID;
 public record DeviceDto(
         UUID id,
         @NotNull
-        DeviceStatus status) implements Serializable {
+        DeviceStatus status){
 }
