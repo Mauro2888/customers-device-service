@@ -1,0 +1,14 @@
+{
+  "nome": "Luca",
+  "cognome": "Cau",
+  "codiceFiscale": "LCUCAU97S24H501M",
+  "indirizzo": "Via Liguria 3",
+  "devices": [
+    {
+      "status": "LOST"
+    },
+    {
+      "status": "INACTIVE"
+    }
+  ]
+}
