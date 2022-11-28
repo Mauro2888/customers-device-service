@@ -15,6 +15,8 @@ git clone https://github.com/Mauro2888/customers-device-service.git
 ```
 
 ### Running the application locally
+This will expose port 8081 in localhost.
+Moreover, the application in dev redirect automatically to swagger UI
 ```shell
 mvn spring-boot:run
 ```
@@ -30,9 +32,28 @@ with the following credentials:
 ### Swagger UI
 Open your browser and navigate to [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
 
-### POST customer request example
-[http://localhost:8081/api/v1/customer](http://localhost:8081/api/v1/customer)
 
+### API
+
+### Customer
+#### api/v1/customer
+* `POST` : Create a new customer
+#### api/v1/customer/:codiceFiscale
+* `GET` : Get customer with codiceFiscale
+#### api/v1/customer/:codiceFiscale/indirizzo
+* `PATCH` : Update customer indirizzo
+
+### Device 
+#### api/v1/device/:uuid
+* `GET` : Get device with UUID
+#### api/v1/device/:uuid/stato
+* `PATCH` : Update device status
+#### api/v1/device/:uuid
+* `DELETE` : Delete device with uuid
+
+### How to create a customer - 
+Endpoint [http://localhost:8081/api/v1/customer](http://localhost:8081/api/v1/customer)
+- Request example
 ```json
 {
   "nome": "Luca",
@@ -50,7 +71,7 @@ Open your browser and navigate to [http://localhost:8081/swagger-ui.html](http:/
 }
 
 ```
-JSON POST response example
+- Response example
 ```json
 {
   "nome": "Luca",
